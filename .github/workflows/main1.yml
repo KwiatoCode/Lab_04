@@ -1,4 +1,4 @@
-name: main
+name: Main Workflow
 
 on:
   push:
@@ -19,7 +19,8 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-        exclude-versions: 3.10  # Wykluczenie wersji 3.10 dla systemu ubuntu
+        # Poniższa linia zostanie dodana, aby wykluczyć wersję 3.10 dla systemu ubuntu
+        exclude-versions: 3.10
 
     - name: Update pip
       run: |
@@ -28,7 +29,7 @@ jobs:
     - name: Install flake8 and unittest
       run: |
         python -m pip install flake8
-        python -m pip install unittest
+        # unittest jest częścią standardowej biblioteki Pythona, więc nie musisz go instalować oddzielnie
 
     - name: Display Python version
       run: python --version
